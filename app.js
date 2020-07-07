@@ -1,11 +1,11 @@
 // import functions and grab DOM elements
-
+import { compareNumbers } from './results.js';
 
 const input = document.getElementById('number-input');
 const yourGuess = document.getElementById('your-guess');
 const remainingTries = document.getElementById('remaining-tries');
 const winLossOutcome = document.getElementById('win-loss-outcome');
-const myButton = document.querySelector('#button');
+const myButton = document.querySelector('#button-submit');
 const resultOutcome = document.querySelector('#win-loss-outcome');
 
 // initialize state
