@@ -5,8 +5,8 @@ const input = document.getElementById('number-input');
 const yourGuess = document.getElementById('your-guess');
 const remainingTries = document.getElementById('remaining-tries');
 const winLossOutcome = document.getElementById('win-loss-outcome');
-const myButton = document.querySelector('#button-submit');
-const resultOutcome = document.querySelector('#win-loss-outcome');
+const myButton = document.getElementById('button-submit');
+const resultOutcome = document.getElementById('win-loss-outcome');
 
 // initialize state
 const correctNumber = Math.ceil(Math.random() * 20);
