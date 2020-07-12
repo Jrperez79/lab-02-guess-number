@@ -10,5 +10,5 @@ export function compareNumbers(guess, correctNumber) {
     } else if (number > correctNumber) {
         return 1;
     }
-    console.log(guess, correctNumber);
+    
 }

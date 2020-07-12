@@ -6,7 +6,6 @@ const submitButton = document.getElementById('button-submit');
 const guessResult = document.getElementById('guess-result');
 //const gameResult = document.getElementById('game-result');
 const remainingTries = document.getElementById('remaining-tries');
-//const infoAboutOutcome = document.getElementById('high-or-low');
 //const resetButton = document.getElementById('reset-button');
 
 // initialize state
