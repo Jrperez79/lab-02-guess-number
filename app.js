@@ -1,53 +1,64 @@
 // import functions and grab DOM elements
-import { compareNumbers } from './results.js';
+import { compareNumbers } from './compareNumbers.js';
 
-const input = document.getElementById('number-input');
-const yourGuess = document.getElementById('your-guess');
+const userInput = document.getElementById('user-input');
+const submitButton = document.getElementById('button-submit');
+const guessResult = document.getElementById('guess-result');
+//const gameResult = document.getElementById('game-result');
 const remainingTries = document.getElementById('remaining-tries');
-const winLossOutcome = document.getElementById('win-loss-outcome');
-const myButton = document.getElementById('button-submit');
-const resultOutcome = document.getElementById('win-loss-outcome');
+//const infoAboutOutcome = document.getElementById('high-or-low');
+//const resetButton = document.getElementById('reset-button');
 
 // initialize state
 const correctNumber = Math.ceil(Math.random() * 20);
 
-let remainingCount = 4;
+let attempts = 4;
 // set event listeners to update state and DOM
 
-function submit() {
-    const playerGuess = Number(input.value);
+/*const updateSpans = () => {
+    remainingTries.textContent = 4;
+    //submitButton.addEventListener('click');
+};
+*/
 
-    const newResults = compareNumbers(playerGuess, correctNumber);
+submitButton.addEventListener('click', () => {
 
-    function youAWinner() {
-        winLossOutcome.textContent = "You a winner!";
-    }
-    
-    function youALoser() {
-        winLossOutcome.textContent = "You the biggest loser!";
-    }
-
-    function reduceTries() {
-        remainingCount--;
-        if (remainingCount <= 0) {
-            youALoser();
-        }
-    }
-
-    function displayResults(hiLow) {
-        remainingTries.textContent = (`${remainingCount} tries remaining.`);
-        yourGuess.textContent = `Too ${hiLow}.`;
-    }
-
-    if (newResults === 0) {
-        youAWinner();
-    } else if (newResults === -1) {
-        reduceTries();
-        displayResults('too low');
-    } else if (newResults === 1) {
-        reduceTries();
-        displayResults('to high');
+    if (compareNumbers(userInput.value, correctNumber) === 1) {
+        attempts--;
+        remainingTries.textContent = attempts;
+        guessResult.textContent = 'Your guess is to high, try again.';
     } 
-}
 
-myButton.addEventListener('click', submit);
+    if (compareNumbers(userInput.value, correctNumber) === -1) {
+        attempts--;
+        remainingTries.textContent = attempts;
+        guessResult.textContent = 'Your guess is to low, try again.';
+    }
+
+    if (compareNumbers(userInput.value, correctNumber) === 0) {
+        guessResult.textContent = 'You guessed right, You win!';
+        submitButton.disabled = true;
+    }
+
+    if (attempts === 0) {
+        guessResult.textContent = 'Your four tries are up, You lose!';
+        remainingTries.textContent = attempts;
+        submitButton.disabled = true;
+        return;
+    }
+});
+
+userInput.value = '';
+
+//remainingTries.textContent = attempts;
+
+
+/*Button for Reset of Game
+const resetGame = () => {
+    //remainingTries.textContent = 0;
+    updateSpans(remainingTries);
+    //updateSpans(submitButton);
+};
+
+resetButton.addEventListener('click', resetGame);
+*/
